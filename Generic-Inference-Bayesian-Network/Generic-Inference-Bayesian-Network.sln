@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generic-Inference-Bayesian-Network", "Generic-Inference-Bayesian-Network\Generic-Inference-Bayesian-Network.csproj", "{C96A8596-2A56-4033-B235-5F32679EE939}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C96A8596-2A56-4033-B235-5F32679EE939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C96A8596-2A56-4033-B235-5F32679EE939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C96A8596-2A56-4033-B235-5F32679EE939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C96A8596-2A56-4033-B235-5F32679EE939}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {810278A5-EC7B-4D85-A14E-79D94C0C6F6C}
+	EndGlobalSection
+EndGlobal
