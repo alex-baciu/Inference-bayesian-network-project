@@ -10,9 +10,9 @@ namespace Generic_Inference_Bayesian_Network
 
         public String Name { get; set; }
 
-        public Double PosX { get; set; }
+        public int PosX { get; set; }
 
-        public Double PosY { get; set; }
+        public int PosY { get; set; }
 
         public List<long> ParentsIds { get; set; }
 
@@ -24,7 +24,6 @@ namespace Generic_Inference_Bayesian_Network
         {
             List<List<String>> sequences = new List<List<string>>();
             List<Node> parents = new List<Node>();
-
 
             foreach (long parentId in ParentsIds)
             {
