@@ -17,8 +17,18 @@ namespace Generic_Inference_Bayesian_Network
         public List<long> ParentsIds { get; set; }
 
         public List<String> NodeDomainValues { get; set; }
+        
+        public String ObservedValue { get; set; }
 
         public Dictionary<String, List<Double>> Probabilities { get; set; }
+
+        public Node DeepCopy()
+        {
+            Node newNode = (Node)this.MemberwiseClone();
+            newNode.ParentsIds = new List<long>();
+            newNode.ParentsIds.AddRange(this.ParentsIds);
+            return newNode;
+        }
 
         public void GenerateProbabilities(Network network)
         {

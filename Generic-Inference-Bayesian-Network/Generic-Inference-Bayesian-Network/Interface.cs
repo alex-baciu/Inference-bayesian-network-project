@@ -22,7 +22,8 @@ namespace Generic_Inference_Bayesian_Network
         public GenericInferenceBayesianNetwork()
         {
             InitializeComponent();
-            networkPictureBox.Image = new Bitmap(networkPictureBox.Height, networkPictureBox.Width);
+            networkPictureBox.Image = new Bitmap(networkPictureBox.Width, networkPictureBox.Height);
+            networkPictureBox.ClientSize = new Size(networkPictureBox.Width, networkPictureBox.Height);
             NodesTextboxes = new Dictionary<Node, TextBox>();
         }
 
@@ -44,6 +45,7 @@ namespace Generic_Inference_Bayesian_Network
             firstParent.PosX = 50;
             firstParent.PosY = 50;
             firstParent.NodeDomainValues = new List<String> { "Da", "Nu" };
+            firstParent.ObservedValue = "None";
             firstParent.Probabilities = new Dictionary<String, List<double>>();
             firstParent.GenerateProbabilities(network);
 
@@ -53,6 +55,7 @@ namespace Generic_Inference_Bayesian_Network
             secondParent.PosX = 250;
             secondParent.PosY = 50;
             secondParent.NodeDomainValues = new List<String> { "Da", "Nu" };
+            secondParent.ObservedValue = "None";
             secondParent.Probabilities = new Dictionary<String, List<double>>();
             secondParent.GenerateProbabilities(network);
 
@@ -62,6 +65,7 @@ namespace Generic_Inference_Bayesian_Network
             child.PosX = 150;
             child.PosY = 200;
             child.NodeDomainValues = new List<String> { "Da", "Nu" };
+            child.ObservedValue = "None";
             child.Probabilities = new Dictionary<String, List<double>>();
             child.GenerateProbabilities(network);
 
@@ -71,6 +75,7 @@ namespace Generic_Inference_Bayesian_Network
             firstSonOfChild.PosX = 50;
             firstSonOfChild.PosY = 400;
             firstSonOfChild.NodeDomainValues = new List<String> { "Da", "Nu" };
+            firstSonOfChild.ObservedValue = "None";
             firstSonOfChild.Probabilities = new Dictionary<String, List<double>>();
             firstSonOfChild.GenerateProbabilities(network);
 
@@ -80,6 +85,7 @@ namespace Generic_Inference_Bayesian_Network
             secondSonOfChild.PosX = 250;
             secondSonOfChild.PosY = 400;
             secondSonOfChild.NodeDomainValues = new List<String> { "Da", "Nu" };
+            secondSonOfChild.ObservedValue = "None";
             secondSonOfChild.Probabilities = new Dictionary<String, List<double>>();
             secondSonOfChild.GenerateProbabilities(network);
 
@@ -110,7 +116,7 @@ namespace Generic_Inference_Bayesian_Network
 
                 Network = JsonConvert.DeserializeObject<Network>(File.ReadAllText(openFileDialog.FileName));
                 NodesTextboxes = new Dictionary<Node, TextBox>();
-                networkPictureBox.Image = new Bitmap(networkPictureBox.Height, networkPictureBox.Width);
+                networkPictureBox.Image = new Bitmap(networkPictureBox.Width, networkPictureBox.Height);
                 networkPictureBox.Refresh();
 
                 Network.Nodes.ForEach(n =>
@@ -232,6 +238,11 @@ namespace Generic_Inference_Bayesian_Network
             {
                 entry.Value.Text = entry.Key.Name + "\r\n(None)";
             }
+
+            foreach(Node node in Network.Nodes)
+            {
+                node.ObservedValue = "None";
+            }
         }
 
         private void OpenMenu(Node node)
@@ -247,13 +258,14 @@ namespace Generic_Inference_Bayesian_Network
                 r = new RadioButton();
                 r.Location = new Point(startX, startY);
                 r.Text = domainValue;
-                if (t.Text.Contains(r.Text))
+                if (t.Text.Contains($"({r.Text})"))
                 {
                     r.Checked = true;
                 }
                 r.CheckedChanged += (sender, e) =>
                 {  
                     t.Text = node.Name + "\r\n(" + domainValue + ")";
+                    node.ObservedValue = domainValue;
                 };
                 menu.Controls.Add(r);
                 startY += 30;
@@ -262,13 +274,14 @@ namespace Generic_Inference_Bayesian_Network
             r = new RadioButton();
             r.Location = new Point(startX, startY);
             r.Text = "None";
-            if (t.Text.Contains(r.Text))
+            if (t.Text.Contains($"({r.Text})"))
             {
                 r.Checked = true;
             }
             r.CheckedChanged += (sender, e) =>
             {              
                 t.Text = node.Name + "\r\n(None)";
+                node.ObservedValue = "None";
             };
             menu.Controls.Add(r);
             menu.Show();
@@ -279,6 +292,8 @@ namespace Generic_Inference_Bayesian_Network
             MouseEventArgs click = (MouseEventArgs)e;
             Point coordinates = click.Location;
             Node pressedNode = null;
+            if (Network == null)
+                return;
 
             for (int i = 0; i < Network.Nodes.Count; i++)
             {
@@ -294,7 +309,30 @@ namespace Generic_Inference_Bayesian_Network
                     }
                     else
                     {
-                        // call function to query the node 
+
+                        InferenceByEnumeration inferenceByEnumeration = new InferenceByEnumeration
+                        {
+                            Network = Network,
+                            QueriedNode = node
+                        };
+                        var results = inferenceByEnumeration.CalculateProbabilities();
+
+                        //show results
+                        var text = $"Query results for Variable {node.Name} [";
+
+                        var observedNodes = Network.Nodes.FindAll(it => it.ObservedValue != "None")
+                            .Select(it => $"{it.Name}={it.ObservedValue}");
+
+                        text += string.Join(", ", observedNodes);
+                        text += "]:\r\n\r\n";
+
+                        node.NodeDomainValues
+                            .Select((val, index) => $"\tP({node.Name}={val})={Math.Round(results[index], 5)}\r\n"
+                        ).ToList()
+                        .ForEach(it => text += $"{it}\r\n");
+
+                        MessageBox.Show(text, "Query Results");
+
                     }
                     break;
                 }

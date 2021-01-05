@@ -48,9 +48,10 @@
             this.mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainPanel.Controls.Add(this.buttonsPanel);
             this.mainPanel.Controls.Add(this.radioOptionsPanel);
-            this.mainPanel.Location = new System.Drawing.Point(12, 12);
+            this.mainPanel.Location = new System.Drawing.Point(16, 15);
+            this.mainPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1160, 93);
+            this.mainPanel.Size = new System.Drawing.Size(1545, 114);
             this.mainPanel.TabIndex = 0;
             // 
             // buttonsPanel
@@ -60,17 +61,19 @@
             this.buttonsPanel.Controls.Add(this.buttonClear);
             this.buttonsPanel.Controls.Add(this.buttonLoad);
             this.buttonsPanel.Controls.Add(this.buttonGenerate);
-            this.buttonsPanel.Location = new System.Drawing.Point(352, 15);
+            this.buttonsPanel.Location = new System.Drawing.Point(469, 18);
+            this.buttonsPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonsPanel.Name = "buttonsPanel";
-            this.buttonsPanel.Size = new System.Drawing.Size(772, 59);
+            this.buttonsPanel.Size = new System.Drawing.Size(1028, 72);
             this.buttonsPanel.TabIndex = 1;
             // 
             // buttonClear
             // 
             this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClear.Location = new System.Drawing.Point(315, 12);
+            this.buttonClear.Location = new System.Drawing.Point(420, 15);
+            this.buttonClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(159, 34);
+            this.buttonClear.Size = new System.Drawing.Size(212, 42);
             this.buttonClear.TabIndex = 2;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
@@ -79,9 +82,10 @@
             // buttonLoad
             // 
             this.buttonLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLoad.Location = new System.Drawing.Point(560, 12);
+            this.buttonLoad.Location = new System.Drawing.Point(747, 15);
+            this.buttonLoad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(159, 34);
+            this.buttonLoad.Size = new System.Drawing.Size(212, 42);
             this.buttonLoad.TabIndex = 1;
             this.buttonLoad.Text = "Load";
             this.buttonLoad.UseVisualStyleBackColor = true;
@@ -90,9 +94,10 @@
             // buttonGenerate
             // 
             this.buttonGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGenerate.Location = new System.Drawing.Point(67, 12);
+            this.buttonGenerate.Location = new System.Drawing.Point(89, 15);
+            this.buttonGenerate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonGenerate.Name = "buttonGenerate";
-            this.buttonGenerate.Size = new System.Drawing.Size(159, 34);
+            this.buttonGenerate.Size = new System.Drawing.Size(212, 42);
             this.buttonGenerate.TabIndex = 0;
             this.buttonGenerate.Text = "Generate";
             this.buttonGenerate.UseVisualStyleBackColor = true;
@@ -105,17 +110,19 @@
             this.radioOptionsPanel.Controls.Add(this.queryRadioButton);
             this.radioOptionsPanel.Controls.Add(this.observeRadioButton);
             this.radioOptionsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioOptionsPanel.Location = new System.Drawing.Point(29, 15);
+            this.radioOptionsPanel.Location = new System.Drawing.Point(39, 18);
+            this.radioOptionsPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioOptionsPanel.Name = "radioOptionsPanel";
-            this.radioOptionsPanel.Size = new System.Drawing.Size(275, 59);
+            this.radioOptionsPanel.Size = new System.Drawing.Size(365, 72);
             this.radioOptionsPanel.TabIndex = 0;
             // 
             // queryRadioButton
             // 
             this.queryRadioButton.AutoSize = true;
-            this.queryRadioButton.Location = new System.Drawing.Point(162, 18);
+            this.queryRadioButton.Location = new System.Drawing.Point(216, 22);
+            this.queryRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.queryRadioButton.Name = "queryRadioButton";
-            this.queryRadioButton.Size = new System.Drawing.Size(85, 28);
+            this.queryRadioButton.Size = new System.Drawing.Size(104, 33);
             this.queryRadioButton.TabIndex = 1;
             this.queryRadioButton.TabStop = true;
             this.queryRadioButton.Text = "Query";
@@ -124,9 +131,10 @@
             // observeRadioButton
             // 
             this.observeRadioButton.AutoSize = true;
-            this.observeRadioButton.Location = new System.Drawing.Point(19, 18);
+            this.observeRadioButton.Location = new System.Drawing.Point(25, 22);
+            this.observeRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.observeRadioButton.Name = "observeRadioButton";
-            this.observeRadioButton.Size = new System.Drawing.Size(107, 28);
+            this.observeRadioButton.Size = new System.Drawing.Size(133, 33);
             this.observeRadioButton.TabIndex = 0;
             this.observeRadioButton.TabStop = true;
             this.observeRadioButton.Text = "Observe";
@@ -135,20 +143,22 @@
             // networkPictureBox
             // 
             this.networkPictureBox.BackColor = System.Drawing.Color.White;
-            this.networkPictureBox.Location = new System.Drawing.Point(12, 132);
+            this.networkPictureBox.Location = new System.Drawing.Point(16, 162);
+            this.networkPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.networkPictureBox.Name = "networkPictureBox";
-            this.networkPictureBox.Size = new System.Drawing.Size(1160, 504);
+            this.networkPictureBox.Size = new System.Drawing.Size(1547, 700);
             this.networkPictureBox.TabIndex = 1;
             this.networkPictureBox.TabStop = false;
             this.networkPictureBox.Click += new System.EventHandler(this.networkPictureBox_Click);
             // 
             // GenericInferenceBayesianNetwork
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.ClientSize = new System.Drawing.Size(1579, 814);
             this.Controls.Add(this.networkPictureBox);
             this.Controls.Add(this.mainPanel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GenericInferenceBayesianNetwork";
             this.Text = "GenericInferenceBayesianNetwork";
             this.mainPanel.ResumeLayout(false);
