@@ -1,0 +1,128 @@
+{
+  "Name": "Network Example",
+  "Nodes": [
+   {
+      "Id": 0,
+      "Name": "Burglary",
+      "PosX": 50,
+      "PosY": 50,
+      "ParentsIds": [],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Burglary=Da": [
+          0.001
+        ],
+        " Burglary=Nu": [
+          0.999
+        ]
+      }
+    },
+	{
+      "Id": 1,
+      "Name": "Earthquake",
+      "PosX": 250,
+      "PosY": 50,
+      "ParentsIds": [],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Earthquake=Da": [
+          0.002
+        ],
+        " Earthquake=Nu": [
+          0.998
+        ]
+      }
+    },
+	 {
+      "Id": 2,
+      "Name": "Alarm",
+      "PosX": 150,
+      "PosY": 200,
+      "ParentsIds": [
+        0,
+        1
+      ],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Burglary=Da Earthquake=Da": [
+          0.95,
+          0.05
+        ],
+        " Burglary=Da Earthquake=Nu": [
+          0.94,
+          0.06
+        ],
+        " Burglary=Nu Earthquake=Da": [
+          0.29,
+          0.71
+        ],
+        " Burglary=Nu Earthquake=Nu": [
+          0.001,
+          0.999
+        ]
+      }
+    },
+    
+    {
+      "Id": 3,
+      "Name": "JohnCalls",
+      "PosX": 50,
+      "PosY": 400,
+      "ParentsIds": [
+        2
+      ],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Alarm=Da": [
+          0.90,
+          0.1
+        ],
+        " Alarm=Nu": [
+          0.05,
+          0.95
+        ]
+      }
+    },
+	 
+    {
+      "Id": 4,
+      "Name": "MaryCalls",
+      "PosX": 250,
+      "PosY": 400,
+      "ParentsIds": [
+        2
+      ],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Alarm=Da": [
+          0.70,
+          0.30
+        ],
+        " Alarm=Nu": [
+          0.01,
+          0.99
+        ]
+      }
+    }
+  ]
+}

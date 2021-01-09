@@ -1,0 +1,128 @@
+{
+  "Name": "Network Example",
+  "Nodes": [
+   
+	 {
+      "Id": 2,
+      "Name": "Febra",
+      "PosX": 150,
+      "PosY": 200,
+      "ParentsIds": [
+        0,
+        1
+      ],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Gripa=Da Abces=Da": [
+          0.8,
+          0.2
+        ],
+        " Gripa=Da Abces=Nu": [
+          0.7,
+          0.3
+        ],
+        " Gripa=Nu Abces=Da": [
+          0.25,
+          0.75
+        ],
+        " Gripa=Nu Abces=Nu": [
+          0.05,
+          0.95
+        ]
+      }
+    },
+    {
+      "Id": 1,
+      "Name": "Abces",
+      "PosX": 250,
+      "PosY": 50,
+      "ParentsIds": [],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Abces=Da": [
+          0.05
+        ],
+        " Abces=Nu": [
+          0.95
+        ]
+      }
+    },
+   
+    {
+      "Id": 3,
+      "Name": "Oboseala",
+      "PosX": 50,
+      "PosY": 400,
+      "ParentsIds": [
+        2
+      ],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Febra=Da": [
+          0.6,
+          0.4
+        ],
+        " Febra=Nu": [
+          0.2,
+          0.8
+        ]
+      }
+    },
+	 {
+      "Id": 0,
+      "Name": "Gripa",
+      "PosX": 50,
+      "PosY": 50,
+      "ParentsIds": [],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Gripa=Da": [
+          0.1
+        ],
+        " Gripa=Nu": [
+          0.9
+        ]
+      }
+    },
+    {
+      "Id": 4,
+      "Name": "Anorexie",
+      "PosX": 250,
+      "PosY": 400,
+      "ParentsIds": [
+        2
+      ],
+      "NodeDomainValues": [
+        "Da",
+        "Nu"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " Febra=Da": [
+          0.5,
+          0.5
+        ],
+        " Febra=Nu": [
+          0.1,
+          0.9
+        ]
+      }
+    }
+  ]
+}

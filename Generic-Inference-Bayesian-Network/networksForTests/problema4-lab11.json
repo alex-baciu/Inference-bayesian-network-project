@@ -1,0 +1,191 @@
+{
+  "Name": "Network Example",
+  "Nodes": [
+    {
+      "Id": 0,
+      "Name": "S1",
+      "PosX": 50,
+      "PosY": 50,
+      "ParentsIds": [],
+      "NodeDomainValues": [
+        "B1",
+        "B2",
+		"B3",
+		"B4"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+        " S1=B1": [
+        0.25
+        ],
+        " S1=B2": [
+        0.25
+        ],
+		" S1=B3": [
+        0.25
+        ],
+		" S1=B4": [
+        0.25
+        ]
+      }
+    },
+    {
+      "Id": 1,
+      "Name": "S2",
+      "PosX": 250,
+      "PosY": 50,
+      "ParentsIds": [0],
+      "NodeDomainValues": [
+        "B1",
+        "B2",
+		"B3",
+		"B4"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+         " S1=B1": [
+        0.75,
+		0.25,
+		0.0,
+		0.0
+        ],
+        " S1=B2": [
+        0.25,
+		0.5,
+		0.25,
+		0.0
+        ],
+		" S1=B3": [
+        0.0,
+		0.25,
+		0.5,
+		0.25
+        ],
+		" S1=B4": [
+        0.0,
+		0.0,
+		0.25,
+		0.75
+        ]
+      }
+    },
+	 {
+      "Id": 2,
+      "Name": "S3",
+      "PosX": 450,
+      "PosY": 50,
+      "ParentsIds": [1],
+      "NodeDomainValues": [
+        "B1",
+        "B2",
+		"B3",
+		"B4"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+         " S2=B1": [
+        0.75,
+		0.25,
+		0.0,
+		0.0
+        ],
+        " S2=B2": [
+        0.25,
+		0.5,
+		0.25,
+		0.0
+        ],
+		" S2=B3": [
+        0.0,
+		0.25,
+		0.5,
+		0.25
+        ],
+		" S2=B4": [
+        0.0,
+		0.0,
+		0.25,
+		0.75
+        ]
+      }
+    },
+	 {
+      "Id": 3,
+      "Name": "S4",
+      "PosX": 650,
+      "PosY": 50,
+      "ParentsIds": [2],
+      "NodeDomainValues": [
+        "B1",
+        "B2",
+		"B3",
+		"B4"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+         " S3=B1": [
+        0.75,
+		0.25,
+		0.0,
+		0.0
+        ],
+        " S3=B2": [
+        0.25,
+		0.5,
+		0.25,
+		0.0
+        ],
+		" S3=B3": [
+        0.0,
+		0.25,
+		0.5,
+		0.25
+        ],
+		" S3=B4": [
+        0.0,
+		0.0,
+		0.25,
+		0.75
+        ]
+      }
+    },
+    {
+      "Id": 4,
+      "Name": "Intersectie",
+      "PosX": 850,
+      "PosY": 50,
+      "ParentsIds": [3],
+      "NodeDomainValues": [
+        "S",
+        "I",
+		"D"
+      ],
+      "ObservedValue": "None",
+      "Probabilities": {
+         " S4=B1": [
+        0.75,
+		0.25,
+		0.0
+        ],
+        " S4=B2": [
+        0.25,
+		0.75,
+		0.0
+		
+        ],
+		" S4=B3": [
+		0.0,
+		0.75,
+		0.25
+        ],
+		" S4=B4": [
+        0.0,
+		0.25,
+		0.75
+        ]
+      }
+    },
+	
+	
+  ]
+}
