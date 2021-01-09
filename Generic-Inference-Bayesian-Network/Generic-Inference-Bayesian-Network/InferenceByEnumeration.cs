@@ -140,7 +140,7 @@ namespace Generic_Inference_Bayesian_Network
         /// </summary>
         /// <returns>List of all calculated probabilities, one for each possible 
         /// value for the queried node</returns>
-        public List<double> CalculateProbabilities()
+        public List<double> QueryNode()
         {
             SortedNodes = TopologicalSort(); 
             List<double> probabilities = new List<double>();

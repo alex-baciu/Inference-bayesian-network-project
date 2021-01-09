@@ -315,7 +315,7 @@ namespace Generic_Inference_Bayesian_Network
                             Network = Network,
                             QueriedNode = node
                         };
-                        var results = inferenceByEnumeration.CalculateProbabilities();
+                        var results = inferenceByEnumeration.QueryNode();
 
                         //show results
                         var text = $"Query results for Variable {node.Name} [";
