@@ -12,7 +12,10 @@ namespace Generic_Inference_Bayesian_Network
 
         private List<Node> SortedNodes { get; set; }
 
-
+        /// <summary>
+        /// Method that sorts nodes ordered by their number of parents
+        /// </summary>
+        /// <returns></returns>
         public List<Node> TopologicalSort()
         {
             List<Node> networkNodes = new List<Node>();
@@ -31,7 +34,7 @@ namespace Generic_Inference_Bayesian_Network
             {
                 if (noParentsNodes.Count == 0)
                 {
-                    throw new Exception("Graful retelei bayesiene are cel putin un ciclu.");
+                    throw new Exception("Bayesian network's graph has at least one cycle.");
                 }
                 Node current = noParentsNodes.Dequeue();
                 sorted.Add(Network.Nodes.Find(it=>it.Id==current.Id));
@@ -49,6 +52,11 @@ namespace Generic_Inference_Bayesian_Network
             return sorted;
         }
 
+        /// <summary>
+        /// Recursive function for calculating probability for a node
+        /// </summary>
+        /// <param name="idx">Nodes's index in SortedNodes list</param>
+        /// <returns></returns>
         double CalculateProbability(int idx)
         {
             if (idx >= SortedNodes.Count)
@@ -67,16 +75,22 @@ namespace Generic_Inference_Bayesian_Network
             
         }
 
-        double CalculateProbForNode(Node node)
+        /// <summary>
+        /// Method that returns probability value from input table of probabilities
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns>Probability taken from input table of probabilities</returns>
+        double CalculateProbForNode(Node node)          //probability is taken from input probabilities' table
         {
             var currentProb = 1.0;
             if (node.ParentsIds.Count == 0)     //if node has no parents
             {
                 var value = $" {node.Name}={node.ObservedValue}";
-                currentProb = node.Probabilities[value][0];
+                currentProb = node.Probabilities[value][0];     
             }
             else
             {
+                //if node has parents, the probability is a conditioned
                 var value = "";
                 node.ParentsIds.ForEach(parentId =>
                 {
@@ -90,6 +104,13 @@ namespace Generic_Inference_Bayesian_Network
             return currentProb;
         }
 
+        /// <summary>
+        /// Method for calculating probbaility when a node is not observed
+        /// For this node, every possible domain value is taken into consideration
+        /// </summary>
+        /// <param name="idx">Node's index in sortedNodes list </param>
+        /// <returns></returns>
+        
         double CalculateProbForNodeInSum(int idx)
         {
             if (idx >= SortedNodes.Count)
@@ -113,11 +134,17 @@ namespace Generic_Inference_Bayesian_Network
             return Sum;
         }
 
+
+        /// <summary>
+        /// Method for calculating probabilities for the queried node
+        /// </summary>
+        /// <returns>List of all calculated probabilities, one for each possible 
+        /// value for the queried node</returns>
         public List<double> CalculateProbabilities()
         {
             SortedNodes = TopologicalSort(); 
             List<double> probabilities = new List<double>();
-            if (QueriedNode.ObservedValue != "None")
+            if (QueriedNode.ObservedValue != "None")            // if node was already observed, return observed probabilities
             {
                 QueriedNode.NodeDomainValues.ForEach(val =>
                 probabilities.Add(val != QueriedNode.ObservedValue ? 0.0 : 1.0));
@@ -125,6 +152,7 @@ namespace Generic_Inference_Bayesian_Network
 
             else
             {
+                //if queried node was not observed, than for each possible value, calculate its probability
                 QueriedNode.NodeDomainValues.ForEach(value =>
                 {
                     QueriedNode.ObservedValue = value;
@@ -136,7 +164,9 @@ namespace Generic_Inference_Bayesian_Network
             }
 
             var probsSum = probabilities.Sum();
+            
             var alpha = probsSum!=0?1.0 / probsSum:0.0;
+            //normalize probabilities so that their sum will be 1
             var normalizedProbs = probabilities.Select(prob => (prob * alpha)).ToList();
             return normalizedProbs;
         }
